@@ -1,0 +1,59 @@
+class Empregado{
+  String nome="";
+  String cpf="";
+  Empregado(String nome,String cpf){
+    this.nome=nome;
+    this.cpf=cpf;
+  }
+}
+class Entregador extends Empregado{
+  int totalEntregas=0;
+  double valorEntregas=0.0;
+  Entregador(String nome,String cpf, int totalEntregas,double valorEntregas):super(nome,cpf){
+    this.totalEntregas=totalEntregas;
+    this.valorEntregas=valorEntregas;
+  }
+  void adicionarEntrega(int valor){
+    this.totalEntregas=valor;
+  }
+  double pagarSalario(){
+    return totalEntregas*valorEntregas;
+  }
+}
+class Montador extends Empregado{
+  int totalDias=0;
+  double valorDiaria=0.0;
+  Montador(String nome,String cpf, int totalDias, double valorDiaria):super(nome,cpf){
+    this.totalDias=totalDias;
+    this.valorDiaria=valorDiaria;
+  }
+  void adicionarDia(int valor){
+    this.totalDias +=valor;
+  }
+  double pagarSalario(){
+    return totalDias*valorDiaria;
+  }
+}
+class Vendedor extends Empregado{
+  double totalVendas=0;
+  double porcentagemComissao=0.0;
+
+  Vendedor(String nome,String cpf, double totalVendas,double porcentagemComissao):super(nome,cpf){
+    this.totalVendas=totalVendas;
+    this.porcentagemComissao=porcentagemComissao;
+  }
+  void adicionarVenda(double valor){
+    this.totalVendas +=valor;
+  }
+  double pagarSalario(){
+    return totalVendas*porcentagemComissao;
+  }
+}
+void main(){
+  Entregador e1=Entregador("Pavão", "000.000.000-00", 10, 30.0);
+  Montador m1=Montador("Giusepe", "111.111.111-11", 15, 100);
+  Vendedor v1=Vendedor("Epaminondas", "222.222.222-22", 50, 100);
+  print("${e1.pagarSalario()}");
+  print("${m1.pagarSalario()}");
+  print("${v1.pagarSalario()}");
+}
